@@ -37,6 +37,7 @@ def collectSleepData(path):
             for row in fileData:
                 if(counter > 0 and counter < 7):
                     if(counter!=1):
+                        # Change hour format to minute format. Remove any letters or whitespaces.
                         row[1] = row[1].replace('m','').replace(' ','').replace('-','')
                         if(row[1]):
                             index = row[1].find('h')
@@ -44,6 +45,7 @@ def collectSleepData(path):
                                 row[1] = row[1].replace('h', '')
                                 row[1] = int(row[1][0:index])*60 + int(row[1][index:None])
                     for i in range(len(row)):
+                        # Fill empty rows with '0' to prevent "undefined errors".
                         if(not row[i]):
                             row[i] = "0"
                     tempArray.append(row[1])

@@ -6,11 +6,14 @@ from collectStepData import collectStepData
 from collectElevationData import collectElevationData
 from datetime import datetime
 
-stepDataPath = "C:/Users/nadle/Documents/GarminData/Steps/"
-sleepDataPath= "C:/Users/nadle/Documents/GarminData/Sleep/"
-intensityDataPath = "C:/Users/nadle/Documents/GarminData/Intensity/"
-stressDataPath = "C:/Users/nadle/Documents/GarminData/Stress/"
-elevationDataPath = "C:/Users/nadle/Documents/GarminData/Elevation/"
+# I
+stepDataPath = "GarminData/Steps/"
+sleepDataPath= "GarminData/Sleep/"
+intensityDataPath = "GarminData/Intensity/"
+stressDataPath = "GarminData/Stress/"
+elevationDataPath = "GarminData/Elevation/"
+
+exportPath = "GarminData/DataExport/Schlafdaten.csv"
 
 sleepData = collectSleepData(sleepDataPath)
 intensityData = collectIntensityData(intensityDataPath)
@@ -41,7 +44,7 @@ def generateCSV():
         
 
     outputList = sleepData
-    with open('C:/Users/nadle/Documents/GarminData/SleepExport/Test.csv', 'w', newline='') as file:
+    with open(exportPath, 'w', newline='') as file:
         writer = csv.writer(file)
 
         writer.writerow(["Date", "Date_Time", "Total_Sleep", "Deep_Sleep", "Light_Sleep", "REM_Time", "Awake", "Intensity", "Steps", "Stress", "Elevation_Up", "Elevation_Down"])
